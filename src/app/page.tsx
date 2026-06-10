@@ -15,11 +15,16 @@ import PurchaseBadge from "@/components/home/purchase-badge";
 import Footer from "@/components/layout/footer";
 import { supportedGames } from "@/data/games";
 
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
+
 const supportedGameHeadings = supportedGames.map(
-  ({ title }: { title: string }) => `lumin.rocks supports ${title}`,
+  ({ title }: { title: string }) => `${SITE_NAME} supports ${title}`,
 );
 
 export default function Home() {
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+  const LOADSTRING = `loadstring(game:HttpGet("${SITE_URL}/"))()`;
+
   return (
     <>
       <Navbar />
@@ -56,7 +61,7 @@ export default function Home() {
             <BlurFade delay={0.35}>
               <h1 className="text-7xl md:text-8xl font-bold text-center mb-4 tracking-tight">
                 <span className="text-[#f8bfd4]">lumin</span>
-                <span>.rocks</span>
+                <span>.rest</span>
               </h1>
             </BlurFade>
 
@@ -73,12 +78,10 @@ export default function Home() {
                     type="text"
                     className="overflow-hidden text-ellipsis w-full sm:w-90 border-[#f8bfd4]/20 focus-visible:ring-[#f8bfd4]/50 font-mono text-sm"
                     readOnly
-                    value={'loadstring(game:HttpGet("https://lumin.rocks/"))()'}
+                    value={LOADSTRING}
                   />
                 </div>
-                <CopyButton
-                  text={'loadstring(game:HttpGet("https://lumin.rocks/"))()'}
-                />
+                <CopyButton text={LOADSTRING} />
 
                 <Button size="icon" variant="outline" asChild>
                   <a

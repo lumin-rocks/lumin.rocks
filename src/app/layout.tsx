@@ -17,24 +17,23 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://lumin.rocks";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 
 export const viewport: Viewport = {
   themeColor: "#f8bfd4",
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "lumin.rocks - Premium Roblox Script Hub",
-  description:
-    "lumin.rocks is a premium Roblox script hub supporting Flee the Facility, RIVALS, The Rake REMASTERED, Slime RNG, and more.",
-  keywords:
-    "lumin.rocks, lumin, roblox, script hub, best roblox script, flee the facility script, rivals script, the rake remastered script, slime rng script, roblox script 2026, hub, keyless",
-  authors: [{ name: "lumin.rocks" }],
+  metadataBase: SITE_URL ? new URL(SITE_URL) : undefined,
+  title: `${SITE_NAME} - Premium Roblox Script Hub`,
+  description: `${SITE_NAME} is a premium Roblox script hub supporting Flee the Facility, RIVALS, The Rake REMASTERED, Slime RNG, and more.`,
+  keywords: `${SITE_NAME}, lumin, roblox, script hub, best roblox script, flee the facility script, rivals script, the rake remastered script, slime rng script, roblox script 2026, hub, keyless`,
+  authors: [{ name: SITE_NAME }],
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
-    siteName: "lumin.rocks",
+    siteName: SITE_NAME,
     locale: "en_US",
     images: `${SITE_URL}/brand/icon.png`,
   },

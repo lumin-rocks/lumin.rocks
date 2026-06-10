@@ -34,4 +34,4 @@ Disallow: /script.html/
 Disallow: /script
 Disallow: /script.html
 
-Sitemap: https://lumin.rocks/sitemap.xml
+Sitemap: https://lumin.rest/sitemap.xml

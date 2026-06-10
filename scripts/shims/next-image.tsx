@@ -18,13 +18,13 @@ function resolveSrc(value: ShimImageSrc): string {
 }
 
 const Image = React.forwardRef<HTMLImageElement, ShimImageProps>(
-  ({ src, alt, loading = "lazy", ...rocks }, ref) => (
+  ({ src, alt, loading = "lazy", ...rest }, ref) => (
     <img
       ref={ref}
       src={resolveSrc(src)}
       alt={alt ?? ""}
       loading={loading}
-      {...rocks}
+      {...rest}
     />
   ),
 );

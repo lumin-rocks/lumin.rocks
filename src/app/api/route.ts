@@ -1,9 +1,8 @@
 import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 
-const SELLAUTH_API_URL =
-  process.env.SELLAUTH_API_URL || "https://api-internal-3.sellauth.com/v1";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://lumin.rocks";
+const SELLAUTH_API_URL = process.env.SELLAUTH_API_URL!;
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL!;
 
 function isValidCartItem(
   item: unknown,
@@ -18,7 +17,10 @@ function isValidCartItem(
 }
 
 export function GET() {
-  return NextResponse.json({ status: "ok", service: "lumin.rocks" });
+  return NextResponse.json({
+    status: "ok",
+    service: new URL(SITE_URL).hostname,
+  });
 }
 
 export async function POST(request: NextRequest) {

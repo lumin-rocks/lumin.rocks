@@ -1,35 +1,33 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
+
 const buildDir = path.resolve("build");
 const indexPath = path.join(buildDir, "index.html");
 
 const routeMeta = {
   home: {
-    title: "lumin.rocks - Premium Roblox Script Hub",
-    description:
-      "lumin.rocks is a premium Roblox script hub supporting Grace, Build a Boat for Treasure, Murder Mystery 2, and more.",
-    keywords:
-      "lumin.rocks, lumin, roblox, script hub, best roblox script, working roblox script 2025, tower of hell script, grace script, build a boat script, murder mystery 2 script, rivals script",
-    url: "https://lumin.rocks/",
-    image: "https://lumin.rocks/brand/icon.png",
+    title: `${SITE_NAME} - Premium Roblox Script Hub`,
+    description: `${SITE_NAME} is a premium Roblox script hub supporting Grace, Build a Boat for Treasure, Murder Mystery 2, and more.`,
+    keywords: `${SITE_NAME}, lumin, roblox, script hub, best roblox script, working roblox script 2025, tower of hell script, grace script, build a boat script, murder mystery 2 script, rivals script`,
+    url: `${SITE_URL}/`,
+    image: `${SITE_URL}/brand/icon.png`,
   },
   buy: {
-    title: "Get Your Key - lumin.rocks",
-    description:
-      "Get free or premium access to lumin.rocks, a premium Roblox script hub with support for Grace, Build a Boat for Treasure, Murder Mystery 2, and more.",
-    keywords:
-      "lumin.rocks key, lumin key system, roblox script key, free roblox script access, lumin premium",
-    url: "https://lumin.rocks/purchase/",
-    image: "https://lumin.rocks/brand/icon.png",
+    title: `Get Your Key - ${SITE_NAME}`,
+    description: `Get free or premium access to ${SITE_NAME}, a premium Roblox script hub with support for Grace, Build a Boat for Treasure, Murder Mystery 2, and more.`,
+    keywords: `${SITE_NAME} key, lumin key system, roblox script key, free roblox script access, lumin premium`,
+    url: `${SITE_URL}/purchase/`,
+    image: `${SITE_URL}/brand/icon.png`,
   },
   "buy/robux": {
-    title: "Buy with Robux - lumin.rocks",
-    description:
-      "Purchase lumin.rocks access using Robux on the Roblox catalog.",
-    keywords: "lumin.rocks robux, buy lumin robux, roblox catalog lumin",
-    url: "https://lumin.rocks/purchase/robux/",
-    image: "https://lumin.rocks/brand/icon.png",
+    title: `Buy with Robux - ${SITE_NAME}`,
+    description: `Purchase ${SITE_NAME} access using Robux on the Roblox catalog.`,
+    keywords: `${SITE_NAME} robux, buy lumin robux, roblox catalog lumin`,
+    url: `${SITE_URL}/purchase/robux/`,
+    image: `${SITE_URL}/brand/icon.png`,
   },
 };
 
@@ -54,24 +52,24 @@ function injectMeta(html, { title, description, keywords, url, image }) {
     ${assetTags}
     <meta data-rh="true" name="description" content="${description}" />
     <meta data-rh="true" name="keywords" content="${keywords}" />
-    <meta data-rh="true" name="author" content="lumin.rocks" />
+    <meta data-rh="true" name="author" content="${SITE_NAME}" />
     <meta data-rh="true" name="robots" content="index, follow" />
     <meta data-rh="true" name="theme-color" content="#f8bfd4" />
     <link data-rh="true" rel="canonical" href="${url}" />
     <meta data-rh="true" property="og:type" content="website" />
     <meta data-rh="true" property="og:url" content="${url}" />
-    <meta data-rh="true" property="og:site_name" content="lumin.rocks" />
+    <meta data-rh="true" property="og:site_name" content="${SITE_NAME}" />
     <meta data-rh="true" property="og:locale" content="en_US" />
     <meta data-rh="true" property="og:title" content="${title}" />
     <meta data-rh="true" property="og:description" content="${description}" />
     <meta data-rh="true" property="og:image" content="${image}" />
-    <meta data-rh="true" property="og:image:alt" content="lumin.rocks logo" />
+    <meta data-rh="true" property="og:image:alt" content="${SITE_NAME} logo" />
     <meta data-rh="true" name="twitter:card" content="summary" />
     <meta data-rh="true" name="twitter:url" content="${url}" />
     <meta data-rh="true" name="twitter:title" content="${title}" />
     <meta data-rh="true" name="twitter:description" content="${description}" />
     <meta data-rh="true" name="twitter:image" content="${image}" />
-    <meta data-rh="true" name="twitter:image:alt" content="lumin.rocks logo" />
+    <meta data-rh="true" name="twitter:image:alt" content="${SITE_NAME} logo" />
   </head>`;
 
   return html.replace(/<head>[\s\S]*?<\/head>/, newHead);

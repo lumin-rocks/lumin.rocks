@@ -22,6 +22,8 @@ export type Reseller = {
   payments: string[];
 };
 
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
+
 export const resellers: Reseller[] = [
   {
     name: "Official",
@@ -60,7 +62,7 @@ export const resellers: Reseller[] = [
         stock: 36,
         description: "Permanent access",
         perks: [
-          "Permanent access to lumin.rocks",
+          `Permanent access to ${SITE_NAME}`,
           "All supported games",
           "No key system required",
           "Priority support",

@@ -7,9 +7,12 @@ import Benefits from "@/components/purchase/benefits";
 import Navbar from "@/components/layout/navbar";
 import LifetimeCard from "@/components/purchase/lifetime-card";
 import PlanCard from "@/components/purchase/plan-card";
+import KeyCard from "@/components/purchase/key-card";
 import SellerCard from "@/components/purchase/seller-card";
 import Footer from "@/components/layout/footer";
 import { resellers } from "@/data/resellers";
+
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 
 const official = resellers.find((r) => r.official);
 const others = resellers.filter((r) => !r.official);
@@ -37,10 +40,10 @@ export default function Buy() {
             <BlurFade delay={0.15}>
               <div className="text-center">
                 <h1 className="text-4xl font-bold sm:text-5xl">
-                  Buy lumin.rocks
+                  Buy {SITE_NAME}
                 </h1>
                 <p className="mx-auto mt-2 max-w-xl text-base text-muted-foreground">
-                  Get access to Lumin.rocks
+                  Get access to {SITE_NAME}
                 </p>
               </div>
             </BlurFade>
@@ -57,12 +60,13 @@ export default function Buy() {
               {official && (
                 <BlurFade delay={0.45}>
                   <section>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       {official.plans
                         ?.filter((p) => p.name !== "Lifetime")
                         .map((plan) => (
                           <PlanCard key={plan.name} plan={plan} />
                         ))}
+                      <KeyCard />
                     </div>
                   </section>
                 </BlurFade>

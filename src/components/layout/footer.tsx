@@ -6,7 +6,7 @@ export default function Footer() {
         <div className="px-2 py-2 flex flex-row items-center gap-2">
           <div>
             <p className="text-xs text-left font-bold">
-              <span className="text-[#f8bfd4]">lumin</span>.rocks
+              <span className="text-[#f8bfd4]">lumin</span>.rest
             </p>
             <p className="text-muted-foreground text-xs">
               Originally known as lumin.rest
